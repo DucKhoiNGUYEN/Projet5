@@ -88,7 +88,7 @@ for i, community in enumerate(final_communities, 1):
     
 #plot_communities(G, final_communities)
 
-
+#Cette fonction est pour colorer et afficher le graphe etape par etape
 def girvan_newman_persistent_color_communities(G, optimal_steps):
     # Copier le graphe lu pour rester sur le même graphe
     copied_graph = G.copy()
