@@ -1,0 +1,35 @@
+def label_propagation(G):
+    # Initialiser chaque nœud avec un label unique
+    labels = {node: node for node in G.nodes()}
+
+    # Itération 
+    t = 1
+
+    # Répéter jusqu'à ce que tous les nœuds aient convergé
+    while True:
+        # Mélange les nœuds aléatoirement
+        nodes = list(G.nodes())
+        random.shuffle(nodes)
+
+        # Pour chaque nœud, mettre à jour son label en fonction de la majorité des labels de ses voisins
+        converged = True
+        for node in nodes:
+            neighbor_labels = [labels[neighbor] for neighbor in G.neighbors(node)]
+            if neighbor_labels:
+                # Compter les occurrences de chaque label parmi les voisins
+                label_counts = {label: neighbor_labels.count(label) for label in set(neighbor_labels)}
+                # Trouver le label majoritaire
+                majority_label = max(label_counts, key=label_counts.get)
+                # Mettre à jour le label du nœud actuel s'il est différent du label majoritaire
+                if labels[node] != majority_label:
+                    labels[node] = majority_label
+                    converged = False
+
+        # Vérifier la convergence
+        if converged:
+            break
+        t+=1
+
+    # Affiche le nombre d'itérations
+    print("itérations = ",t)
+    return labels
