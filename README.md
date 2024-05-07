@@ -1,1 +1,3 @@
 There 4 different algorithms to analyse the 5 graphs
+the 2 LR graphs are relatively small compared to the others 3 , which are real life examples...
+There 2 ways to read the grapsh , either by 
